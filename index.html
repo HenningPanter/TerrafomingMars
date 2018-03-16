@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mars</title>  
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<style>
+#background {
+    width: 100%; 
+    height: 100%; 
+    position: fixed; 
+    left: 0px; 
+    top: 0px; 
+    z-index: -1; /* Ensure div tag stays behind content; -999 might work, too. */
+}
+
+.stretch {
+    width:100%;
+    height:100%;
+}
+	</style>
+</head>
+<body>
+
+	<div id="background">
+		<img src="background.jpg" class="stretch" alt="" />
+	</div>
+
+	<div id="aux" style="z-index: 1; position: absolute; top: 0%; left:0%; height: 20%; width: 40%;">
+	</div>
+
+  <input style="height: 30px; width: 180px; font-size: 20px; position: absolute; top: 50%; left:0%; " type="button" value="Vollbild" id="Vollbild">
+
+	<div id="Geld" style="z-index: 1; position: absolute; top: 0%; left:0%; height: 28%; width: 41%;">
+      <div id="GeldWert" style="z-index: 2; position: absolute; top: 10%; left:70%; height: 50%; width: 20%; font-size: 80px;">
+      20
+      </div>
+	</div>
+
+	<div id="Stahl" style="z-index: 1; position: absolute; top: 0%; left:42%; height: 28%; width: 28%">
+	</div>
+
+	<div id="Titan" style="z-index: 1; position: absolute; top: 0%; left:71%; height: 28%; width: 28%">
+	</div>
+
+
+
+  <div id="InputGeld" style="display: none; background-color:#cccccc;
+          z-index: 1; position: absolute; top: 5%; left:5%; height: 90%; width: 90%">
+    <div id="InputGeld" style=" z-index: 1; position: absolute; top: 10%; left:49%; height: 80%; width: 50%">
+      <table width="100%">
+        <tr>
+          <td align="center">
+            <table cellspacing="50px">
+              <tr>
+                  <td>
+                      <input style="height: 80px; width: 180px; font-size: 60px" type="button" value="-10" id="m10">
+                  </td>
+                  <td>
+                      <input style="height: 80px; width: 180px; font-size: 60px" type="button" value="+10" id="p10">
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <input style="height: 80px; width: 180px; font-size: 60px" type="button" value="-5" id="m5">
+                  </td>
+                  <td>
+                      <input style="height: 80px; width: 180px; font-size: 60px" type="button" value="+5" id="p5">
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <input style="height: 80px; width: 180px; font-size: 60px" type="button" value="-1" id="m1">
+                  </td>
+                  <td>
+                      <input style="height: 80px; width: 180px; font-size: 60px" type="button" value="+1" id="p1">
+                  </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div>
+    
+    <input style="height: 20%; width: 20%; font-size: 80px; position: absolute; top: 20%; left: 10% "
+    type="text" id="InputForm">
+    <input style="height: 20%; width: 20%; font-size: 80px; position: absolute; top: 70%; left: 10% "
+    type="button" value="Set" id="SetGeld">
+	</div>
+
+
+
+
+</body>
+</html>
+
+<script>
+
+jQuery(function($)
+{
+    setup();
+
+  function setup()
+  { 
+    var Geld = 0;
+
+    var Value = 0;
+
+    var VollbildStatus = 0;
+
+    var $VollbildFunktion = $("#Vollbild");
+
+    var $PlusEinsFunktion = $("#p1");
+    var $MinusEinsFunktion = $("#m1");
+    var $PlusFuenfFunktion = $("#p5");
+    var $MinusFuenfFunktion = $("#m5");
+    var $PlusZehnFunktion = $("#p10");
+    var $MinusZehnFunktion = $("#m10");
+
+
+    var $GeldFunction = $("#Geld")
+		var $GeldCloseFunction = $("#SetGeld")
+
+    var $StahlFunction = $("#Stahl")
+		var $StahlCloseFunction = $("#InputStahlClose")
+
+    var $TitanFunction = $("#Titan")
+		var $TitanCloseFunction = $("#InputTitanClose")
+
+
+
+    //-------------------------------------- +- Buttons
+    $VollbildFunktion.on('click',function()
+    {
+      if(VollbildStatus == 0)
+      {
+        VollbildStatus = 1;
+       
+      }
+      else
+      {
+        VollbildStatus = 0;
+        document.exitFullscreen;
+      }
+    });
+
+
+
+
+
+
+
+
+    $PlusEinsFunktion.on('click',function()
+    {
+      Value +=1;
+			document.getElementById('InputForm').value = Value.toString();
+    });
+
+    $MinusEinsFunktion.on('click',function()
+    {
+      Value -=1;
+			document.getElementById('InputForm').value = Value.toString();
+    });
+
+    $PlusFuenfFunktion.on('click',function()
+    {
+      Value +=5;
+			document.getElementById('InputForm').value = Value.toString();
+    });
+
+    $MinusFuenfFunktion.on('click',function()
+    {
+      Value -=5;
+			document.getElementById('InputForm').value = Value.toString();
+    });
+
+    $PlusZehnFunktion.on('click',function()
+    {
+      Value +=10;
+			document.getElementById('InputForm').value = Value.toString();
+    });
+
+    $MinusZehnFunktion.on('click',function()
+    {
+      Value -=10;
+			document.getElementById('InputForm').value = Value.toString();
+    });
+
+    //--------------------------------------
+
+
+
+    $GeldFunction.on('click',function()
+    {
+      Value = parseInt(document.getElementById('GeldWert').innerText);
+      document.getElementById('InputForm').value = Value.toString();
+			$(document.getElementById('InputGeld')).fadeIn();
+
+    });
+
+    $GeldCloseFunction.on('click',function()
+    {
+			$(document.getElementById('InputGeld')).fadeOut();
+      document.getElementById('GeldWert').textContent = Value;
+    });
+
+    $StahlFunction.on('click',function()
+    {
+			$(document.getElementById('InputStahl')).fadeIn();
+    });
+
+    $StahlCloseFunction.on('click',function()
+    {
+			$(document.getElementById('InputStahl')).fadeOut();
+    });
+
+    $TitanFunction.on('click',function()
+    {
+			$(document.getElementById('InputTitan')).fadeIn();
+    });
+
+    $TitanCloseFunction.on('click',function()
+    {
+			$(document.getElementById('InputTitan')).fadeOut();
+    });
+
+    $("body").mousemove(function(e) {
+      var position = (e.pageX/($(window).width())) + '  ' + (e.pageY/($(window).height()));
+        document.getElementById('aux').textContent = position;
+    })
+
+  }
+
+});
+
+</script>
