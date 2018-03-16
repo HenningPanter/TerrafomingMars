@@ -1,147 +1,1463 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Mars</title>  
-	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-	<style>
-#background {
-    width: 100%; 
-    height: 100%; 
-    position: fixed; 
-    left: 0px; 
-    top: 0px; 
-    z-index: -1; /* Ensure div tag stays behind content; -999 might work, too. */
-}
+  <title>Mars</title>
+  <meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
 
-.stretch {
-    width:100%;
-    height:100%;
-}
-	</style>
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <style>
+    p {
+      display: inline;
+      margin: 0px;
+    }
+
+    input {
+      padding: 0px;
+      margin: 0px;
+    }
+
+    body {
+      padding: 0px;
+      margin: 0px;
+    }
+
+    div {
+      padding: 0px;
+      margin: 0px;
+    }
+
+    #background {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      left: 0px;
+      top: 0px;
+      z-index: -1;
+      /* Ensure div tag stays behind content; -999 might work, too. */
+    }
+
+    .stretch {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
 </head>
+
 <body>
-
-	<div id="background">
-		<img src="background.jpg" class="stretch" alt="" />
-	</div>
-
-	<div id="aux" style="z-index: 1; position: absolute; top: 0%; left:0%; height: 20%; width: 40%;">
-	</div>
-
-  <input style="height: 30px; width: 180px; font-size: 20px; position: absolute; top: 50%; left:0%; " type="button" value="Vollbild" id="Vollbild">
-
-	<div id="Geld" style="z-index: 1; position: absolute; top: 0%; left:0%; height: 28%; width: 41%;">
-      <div id="GeldWert" style="z-index: 2; position: absolute; top: 10%; left:70%; height: 50%; width: 20%; font-size: 80px;">
-      20
-      </div>
-	</div>
-
-	<div id="Stahl" style="z-index: 1; position: absolute; top: 0%; left:42%; height: 28%; width: 28%">
-	</div>
-
-	<div id="Titan" style="z-index: 1; position: absolute; top: 0%; left:71%; height: 28%; width: 28%">
-	</div>
-
-
-
-  <div id="InputGeld" style="display: none; background-color:#cccccc;
-          z-index: 1; position: absolute; top: 5%; left:5%; height: 90%; width: 90%">
-    <div id="InputGeld" style=" z-index: 1; position: absolute; top: 10%; left:49%; height: 80%; width: 50%">
-      <table width="100%">
-        <tr>
-          <td align="center">
-            <table cellspacing="50px">
-              <tr>
-                  <td>
-                      <input style="height: 80px; width: 180px; font-size: 60px" type="button" value="-10" id="m10">
-                  </td>
-                  <td>
-                      <input style="height: 80px; width: 180px; font-size: 60px" type="button" value="+10" id="p10">
-                  </td>
-              </tr>
-              <tr>
-                  <td>
-                      <input style="height: 80px; width: 180px; font-size: 60px" type="button" value="-5" id="m5">
-                  </td>
-                  <td>
-                      <input style="height: 80px; width: 180px; font-size: 60px" type="button" value="+5" id="p5">
-                  </td>
-              </tr>
-              <tr>
-                  <td>
-                      <input style="height: 80px; width: 180px; font-size: 60px" type="button" value="-1" id="m1">
-                  </td>
-                  <td>
-                      <input style="height: 80px; width: 180px; font-size: 60px" type="button" value="+1" id="p1">
-                  </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
+  <div id="main">
+    <div id="background">
+      <img src="background.jpg" class="stretch" alt="" />
     </div>
-    
-    <input style="height: 20%; width: 20%; font-size: 80px; position: absolute; top: 20%; left: 10% "
-    type="text" id="InputForm">
-    <input style="height: 20%; width: 20%; font-size: 80px; position: absolute; top: 70%; left: 10% "
-    type="button" value="Set" id="SetGeld">
-	</div>
+
+    <div id="aux" style="z-index: 1; position: absolute; top: 0%; left:0%; height: 20%; width: 40%;">
+    </div>
+
+    <input id="Vollbild" style="height: 7%; width: 100px; font-size: 90%; position: absolute; top: 47%; left:45%; " type="button"
+      value="Vollbild">
+
+    <div id="Geld" style="z-index: 1; position: absolute; top: 0%; left:0%; height: 28%; width: 41%;">
+      <div id="GeldWert" style="z-index: 2; position: absolute; top: 10%; left:70%; height: 50%; width: 20%; font-size: 200%;">
+        20
+      </div>
+    </div>
+
+    <div id="Stahl" style="z-index: 1; position: absolute; top: 0%; left:42%; height: 28%; width: 28%">
+      <div id="StahlWert" style="z-index: 2; position: absolute; top: 0%; left:72%; height: 50%; width: 20%; font-size: 200%;">
+        0
+      </div>
+    </div>
+
+    <div id="Titan" style="z-index: 1; position: absolute; top: 0%; left:71%; height: 28%; width: 28%">
+      <div id="TitanWert" style="z-index: 2; position: absolute; top: 0%; left:72%; height: 50%; width: 20%; font-size: 200%;">
+        0
+      </div>
+    </div>
+
+    <div id="GeldProduktion" style="z-index: 1; position: absolute; top: 30%; left:2%; height: 19%; width: 38%">
+      <div id="GeldProduktionWert" style="z-index: 2; position: absolute; top: 0%; left:50%; height: 50%; width: 20%; font-size: 200%;">
+        0
+      </div>
+    </div>
+
+    <div id="StahlProduktion" style="z-index: 1; position: absolute; top: 30%; left:43%; height: 14%; width: 26%">
+      <div id="StahlProduktionWert" style="z-index: 2; position: absolute; top: 0%; left:40%; height: 50%; width: 20%; font-size: 200%;">
+        0
+      </div>
+    </div>
+
+    <div id="TitanProduktion" style="z-index: 1; position: absolute; top: 30%; left:72%; height: 14%; width: 26%">
+      <div id="TitanProduktionWert" style="z-index: 2; position: absolute; top: 0%; left:40%; height: 50%; width: 20%; font-size: 200%;">
+        0
+      </div>
+    </div>
+
+    <div id="PflanzenProduktion" style="z-index: 1; position: absolute; top: 56%; left:2%; height: 14%; width: 31%">
+      <div id="PflanzenProduktionWert" style="z-index: 2; position: absolute; top: 0%; left:40%; height: 50%; width: 20%; font-size: 200%;">
+        0
+      </div>
+    </div>
+
+    <div id="EnergieProduktion" style="z-index: 1; position: absolute; top: 56%; left:37%; height: 14%; width: 28%">
+      <div id="EnergieProduktionWert" style="z-index: 2; position: absolute; top: 0%; left:40%; height: 50%; width: 20%; font-size: 200%;">
+        0
+      </div>
+    </div>
+
+    <div id="TemperaturProduktion" style="z-index: 1; position: absolute; top: 55%; left:67%; height: 15%; width: 31%">
+      <div id="TemperaturProduktionWert" style="z-index: 2; position: absolute; top: 0%; left:40%; height: 50%; width: 20%; font-size: 200%;">
+        0
+      </div>
+    </div>
+
+    <div id="Pflanzen" style="z-index: 1; position: absolute; top: 74%; left: 1%; height: 25%; width: 33%">
+      <div id="PflanzenWert" style="z-index: 2; position: absolute; top: 0%; left:72%; height: 50%; width: 20%; font-size: 200%;">
+        0
+      </div>
+    </div>
+
+    <div id="Energie" style="z-index: 1; position: absolute; top: 74%; left: 37%; height: 25%; width: 28%">
+      <div id="EnergieWert" style="z-index: 2; position: absolute; top: 0%; left:1%; height: 50%; width: 20%; font-size: 200%;">
+        0
+      </div>
+    </div>
+
+    <div id="Temperatur" style="z-index: 1; position: absolute; top: 74%; left: 67%; height: 25%; width: 32%">
+      <div id="TemperaturWert" style="z-index: 2; position: absolute; top: 0%; left:76%; height: 50%; width: 20%; font-size: 200%;">
+        0
+      </div>
+    </div>
 
 
 
 
+    <!-- Geld Input----------------------------------------------------------------------------------------------- -->
+    <div id="InputGeld" style="display: none; background-color:#cccccc;
+          z-index: 1; position: absolute; top: 5%; left:5%; height: 90%; width: 90%">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 5%; left: 40%;" type="button" value="-10"
+        id="Geld_m10">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 5%; left: 70%;" type="button" value="+10"
+        id="Geld_p10">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 35%; left: 40%;" type="button" value="-5"
+        id="Geld_m5">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 35%; left: 70%;" type="button" value="+5"
+        id="Geld_p5">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 40%;" type="button" value="-1"
+        id="Geld_m1">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 70%;" type="button" value="+1"
+        id="Geld_p1">
+
+      <p style="font-size: 200%; position: absolute; top: 1%; left: 10% ">
+        <b>Geld</b>
+      </p>
+
+      <p style="font-size: 200%; position: absolute; top: 21%; left: 2% ">Alt: </p>
+      <p style="font-size: 200%; position: absolute; top: 21%; left: 23% " id="GeldOldValue"></p>
+
+      <p style="font-size: 200%; position: absolute; top: 43%; left: 2% ">Neu:</p>
+      <p style="font-size: 200%; position: absolute; top: 43%; left: 23% " id="GeldNewValue"> </p>
+
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 3% " type="button" value="Set"
+        id="SetGeld">
+    </div>
+    <!-- Geld Input End ----------------------------------------------------------------------------------------------- -->
+
+    <!-- Stahl Input----------------------------------------------------------------------------------------------- -->
+    <div id="InputStahl" style="display: none; background-color:#cccccc;
+            z-index: 1; position: absolute; top: 5%; left:5%; height: 90%; width: 90%">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 5%; left: 40%;" type="button" value="-10"
+        id="Stahl_m10">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 5%; left: 70%;" type="button" value="+10"
+        id="Stahl_p10">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 35%; left: 40%;" type="button" value="-5"
+        id="Stahl_m5">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 35%; left: 70%;" type="button" value="+5"
+        id="Stahl_p5">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 40%;" type="button" value="-1"
+        id="Stahl_m1">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 70%;" type="button" value="+1"
+        id="Stahl_p1">
+
+      <p style="font-size: 200%; position: absolute; top: 1%; left: 10% ">
+        <b>Stahl</b>
+      </p>
+
+      <p style="font-size: 200%; position: absolute; top: 21%; left: 2% ">Alt: </p>
+      <p style="font-size: 200%; position: absolute; top: 21%; left: 23% " id="StahlOldValue"></p>
+
+      <p style="font-size: 200%; position: absolute; top: 43%; left: 2% ">Neu:</p>
+      <p style="font-size: 200%; position: absolute; top: 43%; left: 23% " id="StahlNewValue"> </p>
+
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 3% " type="button" value="Set"
+        id="SetStahl">
+    </div>
+    <!-- Stahl Input End ----------------------------------------------------------------------------------------------- -->
+
+    <!-- Titan Input----------------------------------------------------------------------------------------------- -->
+    <div id="InputTitan" style="display: none; background-color:#cccccc;
+            z-index: 1; position: absolute; top: 5%; left:5%; height: 90%; width: 90%">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 5%; left: 40%;" type="button" value="-10"
+        id="Titan_m10">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 5%; left: 70%;" type="button" value="+10"
+        id="Titan_p10">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 35%; left: 40%;" type="button" value="-5"
+        id="Titan_m5">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 35%; left: 70%;" type="button" value="+5"
+        id="Titan_p5">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 40%;" type="button" value="-1"
+        id="Titan_m1">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 70%;" type="button" value="+1"
+        id="Titan_p1">
+
+      <p style="font-size: 200%; position: absolute; top: 1%; left: 10% ">
+        <b>Titan</b>
+      </p>
+
+      <p style="font-size: 200%; position: absolute; top: 21%; left: 2% ">Alt: </p>
+      <p style="font-size: 200%; position: absolute; top: 21%; left: 23% " id="TitanOldValue"></p>
+
+      <p style="font-size: 200%; position: absolute; top: 43%; left: 2% ">Neu:</p>
+      <p style="font-size: 200%; position: absolute; top: 43%; left: 23% " id="TitanNewValue"> </p>
+
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 3% " type="button" value="Set"
+        id="SetTitan">
+    </div>
+    <!-- Titan Input End ----------------------------------------------------------------------------------------------- -->
+
+    <!-- GeldProduktion Input----------------------------------------------------------------------------------------------- -->
+    <div id="InputGeldProduktion" style="display: none; background-color:#cccccc;
+            z-index: 1; position: absolute; top: 5%; left:5%; height: 90%; width: 90%">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 5%; left: 40%;" type="button" value="-10"
+        id="GeldProduktion_m10">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 5%; left: 70%;" type="button" value="+10"
+        id="GeldProduktion_p10">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 35%; left: 40%;" type="button" value="-5"
+        id="GeldProduktion_m5">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 35%; left: 70%;" type="button" value="+5"
+        id="GeldProduktion_p5">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 40%;" type="button" value="-1"
+        id="GeldProduktion_m1">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 70%;" type="button" value="+1"
+        id="GeldProduktion_p1">
+
+      <p style="font-size: 200%; position: absolute; top: 1%; left: 10% ">
+        <b>GeldProduktion</b>
+      </p>
+
+      <p style="font-size: 200%; position: absolute; top: 21%; left: 2% ">Alt: </p>
+      <p style="font-size: 200%; position: absolute; top: 21%; left: 23% " id="GeldProduktionOldValue"></p>
+
+      <p style="font-size: 200%; position: absolute; top: 43%; left: 2% ">Neu:</p>
+      <p style="font-size: 200%; position: absolute; top: 43%; left: 23% " id="GeldProduktionNewValue"> </p>
+
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 3% " type="button" value="Set"
+        id="SetGeldProduktion">
+    </div>
+    <!-- GeldProduktion Input End ----------------------------------------------------------------------------------------------- -->
+
+    <!-- StahlProduktion Input----------------------------------------------------------------------------------------------- -->
+    <div id="InputStahlProduktion" style="display: none; background-color:#cccccc;
+            z-index: 1; position: absolute; top: 5%; left:5%; height: 90%; width: 90%">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 5%; left: 40%;" type="button" value="-10"
+        id="StahlProduktion_m10">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 5%; left: 70%;" type="button" value="+10"
+        id="StahlProduktion_p10">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 35%; left: 40%;" type="button" value="-5"
+        id="StahlProduktion_m5">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 35%; left: 70%;" type="button" value="+5"
+        id="StahlProduktion_p5">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 40%;" type="button" value="-1"
+        id="StahlProduktion_m1">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 70%;" type="button" value="+1"
+        id="StahlProduktion_p1">
+
+      <p style="font-size: 200%; position: absolute; top: 1%; left: 10% ">
+        <b>StahlProduktion</b>
+      </p>
+
+      <p style="font-size: 200%; position: absolute; top: 21%; left: 2% ">Alt: </p>
+      <p style="font-size: 200%; position: absolute; top: 21%; left: 23% " id="StahlProduktionOldValue"></p>
+
+      <p style="font-size: 200%; position: absolute; top: 43%; left: 2% ">Neu:</p>
+      <p style="font-size: 200%; position: absolute; top: 43%; left: 23% " id="StahlProduktionNewValue"> </p>
+
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 3% " type="button" value="Set"
+        id="SetStahlProduktion">
+    </div>
+    <!-- StahlProduktion Input End ----------------------------------------------------------------------------------------------- -->
+
+    <!-- TitanProduktion Input----------------------------------------------------------------------------------------------- -->
+    <div id="InputTitanProduktion" style="display: none; background-color:#cccccc;
+            z-index: 1; position: absolute; top: 5%; left:5%; height: 90%; width: 90%">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 5%; left: 40%;" type="button" value="-10"
+        id="TitanProduktion_m10">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 5%; left: 70%;" type="button" value="+10"
+        id="TitanProduktion_p10">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 35%; left: 40%;" type="button" value="-5"
+        id="TitanProduktion_m5">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 35%; left: 70%;" type="button" value="+5"
+        id="TitanProduktion_p5">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 40%;" type="button" value="-1"
+        id="TitanProduktion_m1">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 70%;" type="button" value="+1"
+        id="TitanProduktion_p1">
+
+      <p style="font-size: 200%; position: absolute; top: 1%; left: 10% ">
+        <b>TitanProduktion</b>
+      </p>
+
+      <p style="font-size: 200%; position: absolute; top: 21%; left: 2% ">Alt: </p>
+      <p style="font-size: 200%; position: absolute; top: 21%; left: 23% " id="TitanProduktionOldValue"></p>
+
+      <p style="font-size: 200%; position: absolute; top: 43%; left: 2% ">Neu:</p>
+      <p style="font-size: 200%; position: absolute; top: 43%; left: 23% " id="TitanProduktionNewValue"></p>
+
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 3% " type="button" value="Set"
+        id="SetTitanProduktion">
+    </div>
+    <!-- TitanProduktion Input End ----------------------------------------------------------------------------------------------- -->
+
+    <!-- PflanzenProduktion Input----------------------------------------------------------------------------------------------- -->
+    <div id="InputPflanzenProduktion" style="display: none; background-color:#cccccc;
+            z-index: 1; position: absolute; top: 5%; left:5%; height: 90%; width: 90%">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 5%; left: 40%;" type="button" value="-10"
+        id="PflanzenProduktion_m10">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 5%; left: 70%;" type="button" value="+10"
+        id="PflanzenProduktion_p10">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 35%; left: 40%;" type="button" value="-5"
+        id="PflanzenProduktion_m5">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 35%; left: 70%;" type="button" value="+5"
+        id="PflanzenProduktion_p5">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 40%;" type="button" value="-1"
+        id="PflanzenProduktion_m1">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 70%;" type="button" value="+1"
+        id="PflanzenProduktion_p1">
+
+      <p style="font-size: 200%; position: absolute; top: 1%; left: 10% ">
+        <b>PflanzenProduktion</b>
+      </p>
+
+      <p style="font-size: 200%; position: absolute; top: 21%; left: 2% ">Alt: </p>
+      <p style="font-size: 200%; position: absolute; top: 21%; left: 23% " id="PflanzenProduktionOldValue"></p>
+
+      <p style="font-size: 200%; position: absolute; top: 43%; left: 2% ">Neu:</p>
+      <p style="font-size: 200%; position: absolute; top: 43%; left: 23% " id="PflanzenProduktionNewValue"> </p>
+
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 3% " type="button" value="Set"
+        id="SetPflanzenProduktion">
+    </div>
+    <!-- PflanzenProduktion Input End ----------------------------------------------------------------------------------------------- -->
+
+    <!-- EnergieProduktion Input----------------------------------------------------------------------------------------------- -->
+    <div id="InputEnergieProduktion" style="display: none; background-color:#cccccc;
+            z-index: 1; position: absolute; top: 5%; left:5%; height: 90%; width: 90%">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 5%; left: 40%;" type="button" value="-10"
+        id="EnergieProduktion_m10">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 5%; left: 70%;" type="button" value="+10"
+        id="EnergieProduktion_p10">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 35%; left: 40%;" type="button" value="-5"
+        id="EnergieProduktion_m5">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 35%; left: 70%;" type="button" value="+5"
+        id="EnergieProduktion_p5">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 40%;" type="button" value="-1"
+        id="EnergieProduktion_m1">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 70%;" type="button" value="+1"
+        id="EnergieProduktion_p1">
+
+      <p style="font-size: 200%; position: absolute; top: 1%; left: 10% ">
+        <b>EnergieProduktion</b>
+      </p>
+
+      <p style="font-size: 200%; position: absolute; top: 21%; left: 2% ">Alt: </p>
+      <p style="font-size: 200%; position: absolute; top: 21%; left: 23% " id="EnergieProduktionOldValue"></p>
+
+      <p style="font-size: 200%; position: absolute; top: 43%; left: 2% ">Neu:</p>
+      <p style="font-size: 200%; position: absolute; top: 43%; left: 23% " id="EnergieProduktionNewValue"> </p>
+
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 3% " type="button" value="Set"
+        id="SetEnergieProduktion">
+    </div>
+    <!-- EnergieProduktion Input End ----------------------------------------------------------------------------------------------- -->
+
+    <!-- TemperaturProduktion Input----------------------------------------------------------------------------------------------- -->
+    <div id="InputTemperaturProduktion" style="display: none; background-color:#cccccc;
+            z-index: 1; position: absolute; top: 5%; left:5%; height: 90%; width: 90%">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 5%; left: 40%;" type="button" value="-10"
+        id="TemperaturProduktion_m10">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 5%; left: 70%;" type="button" value="+10"
+        id="TemperaturProduktion_p10">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 35%; left: 40%;" type="button" value="-5"
+        id="TemperaturProduktion_m5">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 35%; left: 70%;" type="button" value="+5"
+        id="TemperaturProduktion_p5">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 40%;" type="button" value="-1"
+        id="TemperaturProduktion_m1">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 70%;" type="button" value="+1"
+        id="TemperaturProduktion_p1">
+
+      <p style="font-size: 200%; position: absolute; top: 1%; left: 10% ">
+        <b>TemperaturProduktion</b>
+      </p>
+
+      <p style="font-size: 200%; position: absolute; top: 21%; left: 2% ">Alt: </p>
+      <p style="font-size: 200%; position: absolute; top: 21%; left: 23% " id="TemperaturProduktionOldValue"></p>
+
+      <p style="font-size: 200%; position: absolute; top: 43%; left: 2% ">Neu:</p>
+      <p style="font-size: 200%; position: absolute; top: 43%; left: 23% " id="TemperaturProduktionNewValue"> </p>
+
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 3% " type="button" value="Set"
+        id="SetTemperaturProduktion">
+    </div>
+    <!-- TemperaturProduktion Input End ----------------------------------------------------------------------------------------------- -->
+
+
+    <!-- EnergieProduktion Input----------------------------------------------------------------------------------------------- -->
+    <div id="InputEnergieProduktion" style="display: none; background-color:#cccccc;
+            z-index: 1; position: absolute; top: 5%; left:5%; height: 90%; width: 90%">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 5%; left: 40%;" type="button" value="-10"
+        id="EnergieProduktion_m10">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 5%; left: 70%;" type="button" value="+10"
+        id="EnergieProduktion_p10">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 35%; left: 40%;" type="button" value="-5"
+        id="EnergieProduktion_m5">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 35%; left: 70%;" type="button" value="+5"
+        id="EnergieProduktion_p5">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 40%;" type="button" value="-1"
+        id="EnergieProduktion_m1">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 70%;" type="button" value="+1"
+        id="EnergieProduktion_p1">
+
+      <p style="font-size: 200%; position: absolute; top: 1%; left: 10% ">
+        <b>EnergieProduktion</b>
+      </p>
+
+      <p style="font-size: 200%; position: absolute; top: 21%; left: 2% ">Alt: </p>
+      <p style="font-size: 200%; position: absolute; top: 21%; left: 23% " id="EnergieProduktionOldValue"></p>
+
+      <p style="font-size: 200%; position: absolute; top: 43%; left: 2% ">Neu:</p>
+      <p style="font-size: 200%; position: absolute; top: 43%; left: 23% " id="EnergieproduktionNewValue"> </p>
+
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 3% " type="button" value="Set"
+        id="SetEnergieProduktion">
+    </div>
+    <!-- EnergieProduktion Input End ----------------------------------------------------------------------------------------------- -->
+
+
+    <!-- TemperaturProduktion Input----------------------------------------------------------------------------------------------- -->
+    <div id="InputTemperaturProduktion" style="display: none; background-color:#cccccc;
+        z-index: 1; position: absolute; top: 5%; left:5%; height: 90%; width: 90%">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 5%; left: 40%;" type="button" value="-10"
+        id="TemperaturProduktion_m10">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 5%; left: 70%;" type="button" value="+10"
+        id="TemperaturProduktion_p10">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 35%; left: 40%;" type="button" value="-5"
+        id="TemperaturProduktion_m5">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 35%; left: 70%;" type="button" value="+5"
+        id="TemperaturProduktion_p5">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 40%;" type="button" value="-1"
+        id="TemperaturProduktion_m1">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 70%;" type="button" value="+1"
+        id="TemperaturProduktion_p1">
+
+      <p style="font-size: 200%; position: absolute; top: 1%; left: 10% ">
+        <b>TemperaturProduktion</b>
+      </p>
+
+      <p style="font-size: 200%; position: absolute; top: 21%; left: 2% ">Alt: </p>
+      <p style="font-size: 200%; position: absolute; top: 21%; left: 23% " id="TemperaturProduktionOldValue"></p>
+
+      <p style="font-size: 200%; position: absolute; top: 43%; left: 2% ">Neu:</p>
+      <p style="font-size: 200%; position: absolute; top: 43%; left: 23% " id="TemperaturproduktionNewValue"> </p>
+
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 3% " type="button" value="Set"
+        id="SetTemperaturProduktion">
+    </div>
+    <!-- TemperaturProduktion Input End ----------------------------------------------------------------------------------------------- -->
+
+
+    <!-- Pflanzen Input----------------------------------------------------------------------------------------------- -->
+    <div id="InputPflanzen" style="display: none; background-color:#cccccc;
+            z-index: 1; position: absolute; top: 5%; left:5%; height: 90%; width: 90%">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 5%; left: 40%;" type="button" value="-10"
+        id="Pflanzen_m10">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 5%; left: 70%;" type="button" value="+10"
+        id="Pflanzen_p10">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 35%; left: 40%;" type="button" value="-5"
+        id="Pflanzen_m5">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 35%; left: 70%;" type="button" value="+5"
+        id="Pflanzen_p5">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 40%;" type="button" value="-1"
+        id="Pflanzen_m1">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 70%;" type="button" value="+1"
+        id="Pflanzen_p1">
+
+      <p style="font-size: 200%; position: absolute; top: 1%; left: 10% ">
+        <b>Pflanzen</b>
+      </p>
+
+      <p style="font-size: 200%; position: absolute; top: 21%; left: 2% ">Alt: </p>
+      <p style="font-size: 200%; position: absolute; top: 21%; left: 23% " id="PflanzenOldValue"></p>
+
+      <p style="font-size: 200%; position: absolute; top: 43%; left: 2% ">Neu:</p>
+      <p style="font-size: 200%; position: absolute; top: 43%; left: 23% " id="PflanzenNewValue"> </p>
+
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 3% " type="button" value="Set"
+        id="SetPflanzen">
+    </div>
+    <!-- Pflanzen Input End ----------------------------------------------------------------------------------------------- -->
+
+
+    <!-- Energie Input----------------------------------------------------------------------------------------------- -->
+    <div id="InputEnergie" style="display: none; background-color:#cccccc;
+            z-index: 1; position: absolute; top: 5%; left:5%; height: 90%; width: 90%">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 5%; left: 40%;" type="button" value="-10"
+        id="Energie_m10">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 5%; left: 70%;" type="button" value="+10"
+        id="Energie_p10">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 35%; left: 40%;" type="button" value="-5"
+        id="Energie_m5">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 35%; left: 70%;" type="button" value="+5"
+        id="Energie_p5">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 40%;" type="button" value="-1"
+        id="Energie_m1">
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 70%;" type="button" value="+1"
+        id="Energie_p1">
+
+      <p style="font-size: 200%; position: absolute; top: 1%; left: 10% ">
+        <b>Energie</b>
+      </p>
+
+      <p style="font-size: 200%; position: absolute; top: 21%; left: 2% ">Alt: </p>
+      <p style="font-size: 200%; position: absolute; top: 21%; left: 23% " id="EnergieOldValue"></p>
+
+      <p style="font-size: 200%; position: absolute; top: 43%; left: 2% ">Neu:</p>
+      <p style="font-size: 200%; position: absolute; top: 43%; left: 23% " id="EnergieNewValue"> </p>
+
+
+      <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 3% " type="button" value="Set"
+        id="SetEnergie">
+    </div>
+    <!-- Energie Input End ----------------------------------------------------------------------------------------------- -->
+
+
+        <!-- Temperatur Input----------------------------------------------------------------------------------------------- -->
+        <div id="InputTemperatur" style="display: none; background-color:#cccccc;
+        z-index: 1; position: absolute; top: 5%; left:5%; height: 90%; width: 90%">
+
+  <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 5%; left: 40%;" type="button" value="-10"
+    id="Temperatur_m10">
+
+  <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 5%; left: 70%;" type="button" value="+10"
+    id="Temperatur_p10">
+
+  <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 35%; left: 40%;" type="button" value="-5"
+    id="Temperatur_m5">
+
+  <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 35%; left: 70%;" type="button" value="+5"
+    id="Temperatur_p5">
+
+  <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 40%;" type="button" value="-1"
+    id="Temperatur_m1">
+
+  <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 70%;" type="button" value="+1"
+    id="Temperatur_p1">
+
+  <p style="font-size: 200%; position: absolute; top: 1%; left: 10% ">
+    <b>Temperatur</b>
+  </p>
+
+  <p style="font-size: 200%; position: absolute; top: 21%; left: 2% ">Alt: </p>
+  <p style="font-size: 200%; position: absolute; top: 21%; left: 23% " id="TemperaturOldValue"></p>
+
+  <p style="font-size: 200%; position: absolute; top: 43%; left: 2% ">Neu:</p>
+  <p style="font-size: 200%; position: absolute; top: 43%; left: 23% " id="TemperaturNewValue"> </p>
+
+
+  <input style="height: 25%; width: 25%; font-size: 200%; position: absolute; top: 65%; left: 3% " type="button" value="Set"
+    id="SetTemperatur">
+</div>
+<!-- Temperatur Input End ----------------------------------------------------------------------------------------------- -->
+
+
+
+
+
+  </div>
 </body>
+
 </html>
+
+
+
+
+
+
 
 <script>
 
-jQuery(function($)
-{
+  jQuery(function ($) {
     setup();
 
-  function setup()
-  { 
-    var Geld = 0;
+    function setup() {
 
-    var Value = 0;
+      var Value = 0;
 
-    var VollbildStatus = 0;
+      var VollbildStatus = 0;
 
-    var $VollbildFunktion = $("#Vollbild");
-
-    var $PlusEinsFunktion = $("#p1");
-    var $MinusEinsFunktion = $("#m1");
-    var $PlusFuenfFunktion = $("#p5");
-    var $MinusFuenfFunktion = $("#m5");
-    var $PlusZehnFunktion = $("#p10");
-    var $MinusZehnFunktion = $("#m10");
-
-
-    var $GeldFunction = $("#Geld")
-		var $GeldCloseFunction = $("#SetGeld")
-
-    var $StahlFunction = $("#Stahl")
-		var $StahlCloseFunction = $("#InputStahlClose")
-
-    var $TitanFunction = $("#Titan")
-		var $TitanCloseFunction = $("#InputTitanClose")
+      var $VollbildFunktion = $("#Vollbild");
 
 
 
-    //-------------------------------------- +- Buttons
-    $VollbildFunktion.on('click',function()
-    {
-      if(VollbildStatus == 0)
-      {
-        VollbildStatus = 1;
-       
-      }
-      else
-      {
-        VollbildStatus = 0;
-        document.exitFullscreen;
-      }
-    });
+      //-------------------------------------- Vollbild Funktion ------------------------------------
+      $VollbildFunktion.on('click', function () {
+        if (VollbildStatus == 0) {
+          VollbildStatus = 1;
+          document.getElementById("Vollbild").value = "Vollbild verlassen";
+          document.getElementById("Vollbild").style.width = "200px";
+          document.getElementById("Vollbild").style.height = "5%";
+
+          if ("fullscreenEnabled" in document || "webkitFullscreenEnabled" in document || "mozFullScreenEnabled" in document || "msFullscreenEnabled" in document) {
+            if (document.fullscreenEnabled || document.webkitFullscreenEnabled || document.mozFullScreenEnabled || document.msFullscreenEnabled) {
+              console.log("User allows fullscreen");
+
+              var element = document.getElementById("main");
+
+              if ("requestFullscreen" in element) {
+                element.requestFullscreen();
+              }
+              else if ("webkitRequestFullscreen" in element) {
+                element.webkitRequestFullscreen();
+              }
+              else if ("mozRequestFullScreen" in element) {
+                element.mozRequestFullScreen();
+              }
+              else if ("msRequestFullscreen" in element) {
+                element.msRequestFullscreen();
+              }
+            }
+          }
+          else {
+            console.log("User doesn't allow full screen");
+          }
+        }
+        else {
+          VollbildStatus = 0;
+          document.getElementById("Vollbild").value = "Vollbild";
+          document.getElementById("Vollbild").style.width = "100px";
+          document.getElementById("Vollbild").style.height = "7%";
+
+          if ("exitFullscreen" in document) {
+            document.exitFullscreen();
+          }
+          else if ("webkitExitFullscreen" in document) {
+            document.webkitExitFullscreen();
+          }
+          else if ("mozCancelFullScreen" in document) {
+            document.mozCancelFullScreen();
+          }
+          else if ("msExitFullscreen" in document) {
+            document.msExitFullscreen();
+          }
+        }
+      });
+
+
+
+      // Geld Funktionen ------------------------------------------------------------
+      var Geld = 0;
+
+      var $GeldFunction = $("#Geld")
+      var $GeldCloseFunction = $("#SetGeld")
+
+      var $GeldPlusEinsFunktion = $("#Geld_p1");
+      var $GeldMinusEinsFunktion = $("#Geld_m1");
+      var $GeldPlusFuenfFunktion = $("#Geld_p5");
+      var $GeldMinusFuenfFunktion = $("#Geld_m5");
+      var $GeldPlusZehnFunktion = $("#Geld_p10");
+      var $GeldMinusZehnFunktion = $("#Geld_m10");
+
+
+      $GeldFunction.on('click', function () {
+        Value = parseInt(document.getElementById('GeldWert').innerText);
+        document.getElementById('GeldOldValue').textContent = Value.toString();
+        document.getElementById('GeldNewValue').textContent = Value.toString();
+        $(document.getElementById('InputGeld')).fadeIn();
+      });
+
+      $GeldCloseFunction.on('click', function () {
+        $(document.getElementById('InputGeld')).fadeOut();
+        document.getElementById('GeldWert').textContent = Value;
+      });
+
+      // --------------- +- Buttons ------------------------------------
+      $GeldPlusEinsFunktion.on('click', function () {
+        Value += 1;
+        document.getElementById('GeldNewValue').textContent = Value.toString();
+      });
+
+      $GeldMinusEinsFunktion.on('click', function () {
+        Value -= 1;
+        document.getElementById('GeldNewValue').textContent = Value.toString();
+      });
+
+      $GeldPlusFuenfFunktion.on('click', function () {
+        Value += 5;
+        document.getElementById('GeldNewValue').textContent = Value.toString();
+      });
+
+      $GeldMinusFuenfFunktion.on('click', function () {
+        Value -= 5;
+        document.getElementById('GeldNewValue').textContent = Value.toString();
+      });
+
+      $GeldPlusZehnFunktion.on('click', function () {
+        Value += 10;
+        document.getElementById('GeldNewValue').textContent = Value.toString();
+      });
+
+      $GeldMinusZehnFunktion.on('click', function () {
+        Value -= 10;
+        document.getElementById('GeldNewValue').textContent = Value.toString();
+      });
+      // Geld Funktionen End ------------------------------------------------------------
+
+      // Stahl Funktionen ------------------------------------------------------------
+      var Stahl = 0;
+
+      var $StahlFunction = $("#Stahl")
+      var $StahlCloseFunction = $("#SetStahl")
+
+      var $StahlPlusEinsFunktion = $("#Stahl_p1");
+      var $StahlMinusEinsFunktion = $("#Stahl_m1");
+      var $StahlPlusFuenfFunktion = $("#Stahl_p5");
+      var $StahlMinusFuenfFunktion = $("#Stahl_m5");
+      var $StahlPlusZehnFunktion = $("#Stahl_p10");
+      var $StahlMinusZehnFunktion = $("#Stahl_m10");
+
+
+      $StahlFunction.on('click', function () {
+        Value = parseInt(document.getElementById('StahlWert').innerText);
+        document.getElementById('StahlOldValue').textContent = Value.toString();
+        document.getElementById('StahlNewValue').textContent = Value.toString();
+        $(document.getElementById('InputStahl')).fadeIn();
+      });
+
+      $StahlCloseFunction.on('click', function () {
+        $(document.getElementById('InputStahl')).fadeOut();
+        document.getElementById('StahlWert').textContent = Value;
+      });
+
+      // --------------- +- Buttons ------------------------------------
+      $StahlPlusEinsFunktion.on('click', function () {
+        Value += 1;
+        document.getElementById('StahlNewValue').textContent = Value.toString();
+      });
+
+      $StahlMinusEinsFunktion.on('click', function () {
+        Value -= 1;
+        document.getElementById('StahlNewValue').textContent = Value.toString();
+      });
+
+      $StahlPlusFuenfFunktion.on('click', function () {
+        Value += 5;
+        document.getElementById('StahlNewValue').textContent = Value.toString();
+      });
+
+      $StahlMinusFuenfFunktion.on('click', function () {
+        Value -= 5;
+        document.getElementById('StahlNewValue').textContent = Value.toString();
+      });
+
+      $StahlPlusZehnFunktion.on('click', function () {
+        Value += 10;
+        document.getElementById('StahlNewValue').textContent = Value.toString();
+      });
+
+      $StahlMinusZehnFunktion.on('click', function () {
+        Value -= 10;
+        document.getElementById('StahlNewValue').textContent = Value.toString();
+      });
+      // Stahl Funktionen End ------------------------------------------------------------
+
+
+      // Titan Funktionen ------------------------------------------------------------
+      var Titan = 0;
+
+      var $TitanFunction = $("#Titan")
+      var $TitanCloseFunction = $("#SetTitan")
+
+      var $TitanPlusEinsFunktion = $("#Titan_p1");
+      var $TitanMinusEinsFunktion = $("#Titan_m1");
+      var $TitanPlusFuenfFunktion = $("#Titan_p5");
+      var $TitanMinusFuenfFunktion = $("#Titan_m5");
+      var $TitanPlusZehnFunktion = $("#Titan_p10");
+      var $TitanMinusZehnFunktion = $("#Titan_m10");
+
+
+      $TitanFunction.on('click', function () {
+        Value = parseInt(document.getElementById('TitanWert').innerText);
+        document.getElementById('TitanOldValue').textContent = Value.toString();
+        document.getElementById('TitanNewValue').textContent = Value.toString();
+        $(document.getElementById('InputTitan')).fadeIn();
+      });
+
+      $TitanCloseFunction.on('click', function () {
+        $(document.getElementById('InputTitan')).fadeOut();
+        document.getElementById('TitanWert').textContent = Value;
+      });
+
+      // --------------- +- Buttons ------------------------------------
+      $TitanPlusEinsFunktion.on('click', function () {
+        Value += 1;
+        document.getElementById('TitanNewValue').textContent = Value.toString();
+      });
+
+      $TitanMinusEinsFunktion.on('click', function () {
+        Value -= 1;
+        document.getElementById('TitanNewValue').textContent = Value.toString();
+      });
+
+      $TitanPlusFuenfFunktion.on('click', function () {
+        Value += 5;
+        document.getElementById('TitanNewValue').textContent = Value.toString();
+      });
+
+      $TitanMinusFuenfFunktion.on('click', function () {
+        Value -= 5;
+        document.getElementById('TitanNewValue').textContent = Value.toString();
+      });
+
+      $TitanPlusZehnFunktion.on('click', function () {
+        Value += 10;
+        document.getElementById('TitanNewValue').textContent = Value.toString();
+      });
+
+      $TitanMinusZehnFunktion.on('click', function () {
+        Value -= 10;
+        document.getElementById('TitanNewValue').textContent = Value.toString();
+      });
+      // Titan Funktionen End ------------------------------------------------------------
+
+
+      // GeldProduktion Funktionen ------------------------------------------------------------
+      var GeldProduktion = 0;
+
+      var $GeldProduktionFunction = $("#GeldProduktion")
+      var $GeldProduktionCloseFunction = $("#SetGeldProduktion")
+
+      var $GeldProduktionPlusEinsFunktion = $("#GeldProduktion_p1");
+      var $GeldProduktionMinusEinsFunktion = $("#GeldProduktion_m1");
+      var $GeldProduktionPlusFuenfFunktion = $("#GeldProduktion_p5");
+      var $GeldProduktionMinusFuenfFunktion = $("#GeldProduktion_m5");
+      var $GeldProduktionPlusZehnFunktion = $("#GeldProduktion_p10");
+      var $GeldProduktionMinusZehnFunktion = $("#GeldProduktion_m10");
+
+
+      $GeldProduktionFunction.on('click', function () {
+        Value = parseInt(document.getElementById('GeldProduktionWert').innerText);
+        document.getElementById('GeldProduktionOldValue').textContent = Value.toString();
+        document.getElementById('GeldProduktionNewValue').textContent = Value.toString();
+        $(document.getElementById('InputGeldProduktion')).fadeIn();
+      });
+
+      $GeldProduktionCloseFunction.on('click', function () {
+        $(document.getElementById('InputGeldProduktion')).fadeOut();
+        document.getElementById('GeldProduktionWert').textContent = Value;
+      });
+
+      // --------------- +- Buttons ------------------------------------
+      $GeldProduktionPlusEinsFunktion.on('click', function () {
+        Value += 1;
+        document.getElementById('GeldProduktionNewValue').textContent = Value.toString();
+      });
+
+      $GeldProduktionMinusEinsFunktion.on('click', function () {
+        Value -= 1;
+        document.getElementById('GeldProduktionNewValue').textContent = Value.toString();
+      });
+
+      $GeldProduktionPlusFuenfFunktion.on('click', function () {
+        Value += 5;
+        document.getElementById('GeldProduktionNewValue').textContent = Value.toString();
+      });
+
+      $GeldProduktionMinusFuenfFunktion.on('click', function () {
+        Value -= 5;
+        document.getElementById('GeldProduktionNewValue').textContent = Value.toString();
+      });
+
+      $GeldProduktionPlusZehnFunktion.on('click', function () {
+        Value += 10;
+        document.getElementById('GeldProduktionNewValue').textContent = Value.toString();
+      });
+
+      $GeldProduktionMinusZehnFunktion.on('click', function () {
+        Value -= 10;
+        document.getElementById('GeldProduktionNewValue').textContent = Value.toString();
+      });
+      // GeldProduktion Funktionen End ------------------------------------------------------------
+
+
+      // StahlProduktion Funktionen ------------------------------------------------------------
+      var StahlProduktion = 0;
+
+      var $StahlProduktionFunction = $("#StahlProduktion")
+      var $StahlProduktionCloseFunction = $("#SetStahlProduktion")
+
+      var $StahlProduktionPlusEinsFunktion = $("#StahlProduktion_p1");
+      var $StahlProduktionMinusEinsFunktion = $("#StahlProduktion_m1");
+      var $StahlProduktionPlusFuenfFunktion = $("#StahlProduktion_p5");
+      var $StahlProduktionMinusFuenfFunktion = $("#StahlProduktion_m5");
+      var $StahlProduktionPlusZehnFunktion = $("#StahlProduktion_p10");
+      var $StahlProduktionMinusZehnFunktion = $("#StahlProduktion_m10");
+
+
+      $StahlProduktionFunction.on('click', function () {
+        Value = parseInt(document.getElementById('StahlProduktionWert').innerText);
+        document.getElementById('StahlProduktionOldValue').textContent = Value.toString();
+        document.getElementById('StahlProduktionNewValue').textContent = Value.toString();
+        $(document.getElementById('InputStahlProduktion')).fadeIn();
+      });
+
+      $StahlProduktionCloseFunction.on('click', function () {
+        $(document.getElementById('InputStahlProduktion')).fadeOut();
+        document.getElementById('StahlProduktionWert').textContent = Value;
+      });
+
+      // --------------- +- Buttons ------------------------------------
+      $StahlProduktionPlusEinsFunktion.on('click', function () {
+        Value += 1;
+        document.getElementById('StahlProduktionNewValue').textContent = Value.toString();
+      });
+
+      $StahlProduktionMinusEinsFunktion.on('click', function () {
+        Value -= 1;
+        document.getElementById('StahlProduktionNewValue').textContent = Value.toString();
+      });
+
+      $StahlProduktionPlusFuenfFunktion.on('click', function () {
+        Value += 5;
+        document.getElementById('StahlProduktionNewValue').textContent = Value.toString();
+      });
+
+      $StahlProduktionMinusFuenfFunktion.on('click', function () {
+        Value -= 5;
+        document.getElementById('StahlProduktionNewValue').textContent = Value.toString();
+      });
+
+      $StahlProduktionPlusZehnFunktion.on('click', function () {
+        Value += 10;
+        document.getElementById('StahlProduktionNewValue').textContent = Value.toString();
+      });
+
+      $StahlProduktionMinusZehnFunktion.on('click', function () {
+        Value -= 10;
+        document.getElementById('StahlProduktionNewValue').textContent = Value.toString();
+      });
+      // StahlProduktion Funktionen End ------------------------------------------------------------
+
+
+      // TitanProduktion Funktionen ------------------------------------------------------------
+      var TitanProduktion = 0;
+
+      var $TitanProduktionFunction = $("#TitanProduktion")
+      var $TitanProduktionCloseFunction = $("#SetTitanProduktion")
+
+      var $TitanProduktionPlusEinsFunktion = $("#TitanProduktion_p1");
+      var $TitanProduktionMinusEinsFunktion = $("#TitanProduktion_m1");
+      var $TitanProduktionPlusFuenfFunktion = $("#TitanProduktion_p5");
+      var $TitanProduktionMinusFuenfFunktion = $("#TitanProduktion_m5");
+      var $TitanProduktionPlusZehnFunktion = $("#TitanProduktion_p10");
+      var $TitanProduktionMinusZehnFunktion = $("#TitanProduktion_m10");
+
+
+      $TitanProduktionFunction.on('click', function () {
+        Value = parseInt(document.getElementById('TitanProduktionWert').innerText);
+        document.getElementById('TitanProduktionOldValue').textContent = Value.toString();
+        document.getElementById('TitanProduktionNewValue').textContent = Value.toString();
+        $(document.getElementById('InputTitanProduktion')).fadeIn();
+      });
+
+      $TitanProduktionCloseFunction.on('click', function () {
+        $(document.getElementById('InputTitanProduktion')).fadeOut();
+        document.getElementById('TitanProduktionWert').textContent = Value;
+      });
+
+      // --------------- +- Buttons ------------------------------------
+      $TitanProduktionPlusEinsFunktion.on('click', function () {
+        Value += 1;
+        document.getElementById('TitanProduktionNewValue').textContent = Value.toString();
+      });
+
+      $TitanProduktionMinusEinsFunktion.on('click', function () {
+        Value -= 1;
+        document.getElementById('TitanProduktionNewValue').textContent = Value.toString();
+      });
+
+      $TitanProduktionPlusFuenfFunktion.on('click', function () {
+        Value += 5;
+        document.getElementById('TitanProduktionNewValue').textContent = Value.toString();
+      });
+
+      $TitanProduktionMinusFuenfFunktion.on('click', function () {
+        Value -= 5;
+        document.getElementById('TitanProduktionNewValue').textContent = Value.toString();
+      });
+
+      $TitanProduktionPlusZehnFunktion.on('click', function () {
+        Value += 10;
+        document.getElementById('TitanProduktionNewValue').textContent = Value.toString();
+      });
+
+      $TitanProduktionMinusZehnFunktion.on('click', function () {
+        Value -= 10;
+        document.getElementById('TitanProduktionNewValue').textContent = Value.toString();
+      });
+      // TitanProduktion Funktionen End ------------------------------------------------------------
+
+
+      // PflanzenProduktion Funktionen ------------------------------------------------------------
+      var PflanzenProduktion = 0;
+
+      var $PflanzenProduktionFunction = $("#PflanzenProduktion")
+      var $PflanzenProduktionCloseFunction = $("#SetPflanzenProduktion")
+
+      var $PflanzenProduktionPlusEinsFunktion = $("#PflanzenProduktion_p1");
+      var $PflanzenProduktionMinusEinsFunktion = $("#PflanzenProduktion_m1");
+      var $PflanzenProduktionPlusFuenfFunktion = $("#PflanzenProduktion_p5");
+      var $PflanzenProduktionMinusFuenfFunktion = $("#PflanzenProduktion_m5");
+      var $PflanzenProduktionPlusZehnFunktion = $("#PflanzenProduktion_p10");
+      var $PflanzenProduktionMinusZehnFunktion = $("#PflanzenProduktion_m10");
+
+
+      $PflanzenProduktionFunction.on('click', function () {
+        Value = parseInt(document.getElementById('PflanzenProduktionWert').innerText);
+        document.getElementById('PflanzenProduktionOldValue').textContent = Value.toString();
+        document.getElementById('PflanzenProduktionNewValue').textContent = Value.toString();
+        $(document.getElementById('InputPflanzenProduktion')).fadeIn();
+      });
+
+      $PflanzenProduktionCloseFunction.on('click', function () {
+        $(document.getElementById('InputPflanzenProduktion')).fadeOut();
+        document.getElementById('PflanzenProduktionWert').textContent = Value;
+      });
+
+      // --------------- +- Buttons ------------------------------------
+      $PflanzenProduktionPlusEinsFunktion.on('click', function () {
+        Value += 1;
+        document.getElementById('PflanzenProduktionNewValue').textContent = Value.toString();
+      });
+
+      $PflanzenProduktionMinusEinsFunktion.on('click', function () {
+        Value -= 1;
+        document.getElementById('PflanzenProduktionNewValue').textContent = Value.toString();
+      });
+
+      $PflanzenProduktionPlusFuenfFunktion.on('click', function () {
+        Value += 5;
+        document.getElementById('PflanzenProduktionNewValue').textContent = Value.toString();
+      });
+
+      $PflanzenProduktionMinusFuenfFunktion.on('click', function () {
+        Value -= 5;
+        document.getElementById('PflanzenProduktionNewValue').textContent = Value.toString();
+      });
+
+      $PflanzenProduktionPlusZehnFunktion.on('click', function () {
+        Value += 10;
+        document.getElementById('PflanzenProduktionNewValue').textContent = Value.toString();
+      });
+
+      $PflanzenProduktionMinusZehnFunktion.on('click', function () {
+        Value -= 10;
+        document.getElementById('PflanzenProduktionNewValue').textContent = Value.toString();
+      });
+      // PflanzenProduktion Funktionen End ------------------------------------------------------------
+
+
+      // EnergieProduktion Funktionen ------------------------------------------------------------
+      var EnergieProduktion = 0;
+
+      var $EnergieProduktionFunction = $("#EnergieProduktion")
+      var $EnergieProduktionCloseFunction = $("#SetEnergieProduktion")
+
+      var $EnergieProduktionPlusEinsFunktion = $("#EnergieProduktion_p1");
+      var $EnergieProduktionMinusEinsFunktion = $("#EnergieProduktion_m1");
+      var $EnergieProduktionPlusFuenfFunktion = $("#EnergieProduktion_p5");
+      var $EnergieProduktionMinusFuenfFunktion = $("#EnergieProduktion_m5");
+      var $EnergieProduktionPlusZehnFunktion = $("#EnergieProduktion_p10");
+      var $EnergieProduktionMinusZehnFunktion = $("#EnergieProduktion_m10");
+
+
+      $EnergieProduktionFunction.on('click', function () {
+        Value = parseInt(document.getElementById('EnergieProduktionWert').innerText);
+        document.getElementById('EnergieProduktionOldValue').textContent = Value.toString();
+        document.getElementById('EnergieProduktionNewValue').textContent = Value.toString();
+        $(document.getElementById('InputEnergieProduktion')).fadeIn();
+      });
+
+      $EnergieProduktionCloseFunction.on('click', function () {
+        $(document.getElementById('InputEnergieProduktion')).fadeOut();
+        document.getElementById('EnergieProduktionWert').textContent = Value;
+      });
+
+      // --------------- +- Buttons ------------------------------------
+      $EnergieProduktionPlusEinsFunktion.on('click', function () {
+        Value += 1;
+        document.getElementById('EnergieProduktionNewValue').textContent = Value.toString();
+      });
+
+      $EnergieProduktionMinusEinsFunktion.on('click', function () {
+        Value -= 1;
+        document.getElementById('EnergieProduktionNewValue').textContent = Value.toString();
+      });
+
+      $EnergieProduktionPlusFuenfFunktion.on('click', function () {
+        Value += 5;
+        document.getElementById('EnergieProduktionNewValue').textContent = Value.toString();
+      });
+
+      $EnergieProduktionMinusFuenfFunktion.on('click', function () {
+        Value -= 5;
+        document.getElementById('EnergieProduktionNewValue').textContent = Value.toString();
+      });
+
+      $EnergieProduktionPlusZehnFunktion.on('click', function () {
+        Value += 10;
+        document.getElementById('EnergieProduktionNewValue').textContent = Value.toString();
+      });
+
+      $EnergieProduktionMinusZehnFunktion.on('click', function () {
+        Value -= 10;
+        document.getElementById('EnergieProduktionNewValue').textContent = Value.toString();
+      });
+      // EnergieProduktion Funktionen End ------------------------------------------------------------
+
+
+      // TemperaturProduktion Funktionen ------------------------------------------------------------
+      var TemperaturProduktion = 0;
+
+      var $TemperaturProduktionFunction = $("#TemperaturProduktion")
+      var $TemperaturProduktionCloseFunction = $("#SetTemperaturProduktion")
+
+      var $TemperaturProduktionPlusEinsFunktion = $("#TemperaturProduktion_p1");
+      var $TemperaturProduktionMinusEinsFunktion = $("#TemperaturProduktion_m1");
+      var $TemperaturProduktionPlusFuenfFunktion = $("#TemperaturProduktion_p5");
+      var $TemperaturProduktionMinusFuenfFunktion = $("#TemperaturProduktion_m5");
+      var $TemperaturProduktionPlusZehnFunktion = $("#TemperaturProduktion_p10");
+      var $TemperaturProduktionMinusZehnFunktion = $("#TemperaturProduktion_m10");
+
+
+      $TemperaturProduktionFunction.on('click', function () {
+        Value = parseInt(document.getElementById('TemperaturProduktionWert').innerText);
+        document.getElementById('TemperaturProduktionOldValue').textContent = Value.toString();
+        document.getElementById('TemperaturProduktionNewValue').textContent = Value.toString();
+        $(document.getElementById('InputTemperaturProduktion')).fadeIn();
+      });
+
+      $TemperaturProduktionCloseFunction.on('click', function () {
+        $(document.getElementById('InputTemperaturProduktion')).fadeOut();
+        document.getElementById('TemperaturProduktionWert').textContent = Value;
+      });
+
+      // --------------- +- Buttons ------------------------------------
+      $TemperaturProduktionPlusEinsFunktion.on('click', function () {
+        Value += 1;
+        document.getElementById('TemperaturProduktionNewValue').textContent = Value.toString();
+      });
+
+      $TemperaturProduktionMinusEinsFunktion.on('click', function () {
+        Value -= 1;
+        document.getElementById('TemperaturProduktionNewValue').textContent = Value.toString();
+      });
+
+      $TemperaturProduktionPlusFuenfFunktion.on('click', function () {
+        Value += 5;
+        document.getElementById('TemperaturProduktionNewValue').textContent = Value.toString();
+      });
+
+      $TemperaturProduktionMinusFuenfFunktion.on('click', function () {
+        Value -= 5;
+        document.getElementById('TemperaturProduktionNewValue').textContent = Value.toString();
+      });
+
+      $TemperaturProduktionPlusZehnFunktion.on('click', function () {
+        Value += 10;
+        document.getElementById('TemperaturProduktionNewValue').textContent = Value.toString();
+      });
+
+      $TemperaturProduktionMinusZehnFunktion.on('click', function () {
+        Value -= 10;
+        document.getElementById('TemperaturProduktionNewValue').textContent = Value.toString();
+      });
+      // TemperaturProduktion Funktionen End ------------------------------------------------------------
+
+
+      // Pflanzen Funktionen ------------------------------------------------------------
+      var Pflanzen = 0;
+
+      var $PflanzenFunction = $("#Pflanzen")
+      var $PflanzenCloseFunction = $("#SetPflanzen")
+
+      var $PflanzenPlusEinsFunktion = $("#Pflanzen_p1");
+      var $PflanzenMinusEinsFunktion = $("#Pflanzen_m1");
+      var $PflanzenPlusFuenfFunktion = $("#Pflanzen_p5");
+      var $PflanzenMinusFuenfFunktion = $("#Pflanzen_m5");
+      var $PflanzenPlusZehnFunktion = $("#Pflanzen_p10");
+      var $PflanzenMinusZehnFunktion = $("#Pflanzen_m10");
+
+
+      $PflanzenFunction.on('click', function () {
+        Value = parseInt(document.getElementById('PflanzenWert').innerText);
+        document.getElementById('PflanzenOldValue').textContent = Value.toString();
+        document.getElementById('PflanzenNewValue').textContent = Value.toString();
+        $(document.getElementById('InputPflanzen')).fadeIn();
+      });
+
+      $PflanzenCloseFunction.on('click', function () {
+        $(document.getElementById('InputPflanzen')).fadeOut();
+        document.getElementById('PflanzenWert').textContent = Value;
+      });
+
+      // --------------- +- Buttons ------------------------------------
+      $PflanzenPlusEinsFunktion.on('click', function () {
+        Value += 1;
+        document.getElementById('PflanzenNewValue').textContent = Value.toString();
+      });
+
+      $PflanzenMinusEinsFunktion.on('click', function () {
+        Value -= 1;
+        document.getElementById('PflanzenNewValue').textContent = Value.toString();
+      });
+
+      $PflanzenPlusFuenfFunktion.on('click', function () {
+        Value += 5;
+        document.getElementById('PflanzenNewValue').textContent = Value.toString();
+      });
+
+      $PflanzenMinusFuenfFunktion.on('click', function () {
+        Value -= 5;
+        document.getElementById('PflanzenNewValue').textContent = Value.toString();
+      });
+
+      $PflanzenPlusZehnFunktion.on('click', function () {
+        Value += 10;
+        document.getElementById('PflanzenNewValue').textContent = Value.toString();
+      });
+
+      $PflanzenMinusZehnFunktion.on('click', function () {
+        Value -= 10;
+        document.getElementById('PflanzenNewValue').textContent = Value.toString();
+      });
+      // Pflanzen Funktionen End ------------------------------------------------------------
+
+
+      // Energie Funktionen ------------------------------------------------------------
+      var Energie = 0;
+
+      var $EnergieFunction = $("#Energie")
+      var $EnergieCloseFunction = $("#SetEnergie")
+
+      var $EnergiePlusEinsFunktion = $("#Energie_p1");
+      var $EnergieMinusEinsFunktion = $("#Energie_m1");
+      var $EnergiePlusFuenfFunktion = $("#Energie_p5");
+      var $EnergieMinusFuenfFunktion = $("#Energie_m5");
+      var $EnergiePlusZehnFunktion = $("#Energie_p10");
+      var $EnergieMinusZehnFunktion = $("#Energie_m10");
+
+
+      $EnergieFunction.on('click', function () {
+        Value = parseInt(document.getElementById('EnergieWert').innerText);
+        document.getElementById('EnergieOldValue').textContent = Value.toString();
+        document.getElementById('EnergieNewValue').textContent = Value.toString();
+        $(document.getElementById('InputEnergie')).fadeIn();
+      });
+
+      $EnergieCloseFunction.on('click', function () {
+        $(document.getElementById('InputEnergie')).fadeOut();
+        document.getElementById('EnergieWert').textContent = Value;
+      });
+
+      // --------------- +- Buttons ------------------------------------
+      $EnergiePlusEinsFunktion.on('click', function () {
+        Value += 1;
+        document.getElementById('EnergieNewValue').textContent = Value.toString();
+      });
+
+      $EnergieMinusEinsFunktion.on('click', function () {
+        Value -= 1;
+        document.getElementById('EnergieNewValue').textContent = Value.toString();
+      });
+
+      $EnergiePlusFuenfFunktion.on('click', function () {
+        Value += 5;
+        document.getElementById('EnergieNewValue').textContent = Value.toString();
+      });
+
+      $EnergieMinusFuenfFunktion.on('click', function () {
+        Value -= 5;
+        document.getElementById('EnergieNewValue').textContent = Value.toString();
+      });
+
+      $EnergiePlusZehnFunktion.on('click', function () {
+        Value += 10;
+        document.getElementById('EnergieNewValue').textContent = Value.toString();
+      });
+
+      $EnergieMinusZehnFunktion.on('click', function () {
+        Value -= 10;
+        document.getElementById('EnergieNewValue').textContent = Value.toString();
+      });
+      // Energie Funktionen End ------------------------------------------------------------
+
+
+      // Temperatur Funktionen ------------------------------------------------------------
+      var Temperatur = 0;
+
+      var $TemperaturFunction = $("#Temperatur")
+      var $TemperaturCloseFunction = $("#SetTemperatur")
+
+      var $TemperaturPlusEinsFunktion = $("#Temperatur_p1");
+      var $TemperaturMinusEinsFunktion = $("#Temperatur_m1");
+      var $TemperaturPlusFuenfFunktion = $("#Temperatur_p5");
+      var $TemperaturMinusFuenfFunktion = $("#Temperatur_m5");
+      var $TemperaturPlusZehnFunktion = $("#Temperatur_p10");
+      var $TemperaturMinusZehnFunktion = $("#Temperatur_m10");
+
+
+      $TemperaturFunction.on('click', function () {
+        Value = parseInt(document.getElementById('TemperaturWert').innerText);
+        document.getElementById('TemperaturOldValue').textContent = Value.toString();
+        document.getElementById('TemperaturNewValue').textContent = Value.toString();
+        $(document.getElementById('InputTemperatur')).fadeIn();
+      });
+
+      $TemperaturCloseFunction.on('click', function () {
+        $(document.getElementById('InputTemperatur')).fadeOut();
+        document.getElementById('TemperaturWert').textContent = Value;
+      });
+
+      // --------------- +- Buttons ------------------------------------
+      $TemperaturPlusEinsFunktion.on('click', function () {
+        Value += 1;
+        document.getElementById('TemperaturNewValue').textContent = Value.toString();
+      });
+
+      $TemperaturMinusEinsFunktion.on('click', function () {
+        Value -= 1;
+        document.getElementById('TemperaturNewValue').textContent = Value.toString();
+      });
+
+      $TemperaturPlusFuenfFunktion.on('click', function () {
+        Value += 5;
+        document.getElementById('TemperaturNewValue').textContent = Value.toString();
+      });
+
+      $TemperaturMinusFuenfFunktion.on('click', function () {
+        Value -= 5;
+        document.getElementById('TemperaturNewValue').textContent = Value.toString();
+      });
+
+      $TemperaturPlusZehnFunktion.on('click', function () {
+        Value += 10;
+        document.getElementById('TemperaturNewValue').textContent = Value.toString();
+      });
+
+      $TemperaturMinusZehnFunktion.on('click', function () {
+        Value -= 10;
+        document.getElementById('TemperaturNewValue').textContent = Value.toString();
+      });
+      // Temperatur Funktionen End ------------------------------------------------------------
 
 
 
@@ -150,87 +1466,19 @@ jQuery(function($)
 
 
 
-    $PlusEinsFunktion.on('click',function()
-    {
-      Value +=1;
-			document.getElementById('InputForm').value = Value.toString();
-    });
-
-    $MinusEinsFunktion.on('click',function()
-    {
-      Value -=1;
-			document.getElementById('InputForm').value = Value.toString();
-    });
-
-    $PlusFuenfFunktion.on('click',function()
-    {
-      Value +=5;
-			document.getElementById('InputForm').value = Value.toString();
-    });
-
-    $MinusFuenfFunktion.on('click',function()
-    {
-      Value -=5;
-			document.getElementById('InputForm').value = Value.toString();
-    });
-
-    $PlusZehnFunktion.on('click',function()
-    {
-      Value +=10;
-			document.getElementById('InputForm').value = Value.toString();
-    });
-
-    $MinusZehnFunktion.on('click',function()
-    {
-      Value -=10;
-			document.getElementById('InputForm').value = Value.toString();
-    });
-
-    //--------------------------------------
 
 
 
-    $GeldFunction.on('click',function()
-    {
-      Value = parseInt(document.getElementById('GeldWert').innerText);
-      document.getElementById('InputForm').value = Value.toString();
-			$(document.getElementById('InputGeld')).fadeIn();
 
-    });
 
-    $GeldCloseFunction.on('click',function()
-    {
-			$(document.getElementById('InputGeld')).fadeOut();
-      document.getElementById('GeldWert').textContent = Value;
-    });
 
-    $StahlFunction.on('click',function()
-    {
-			$(document.getElementById('InputStahl')).fadeIn();
-    });
-
-    $StahlCloseFunction.on('click',function()
-    {
-			$(document.getElementById('InputStahl')).fadeOut();
-    });
-
-    $TitanFunction.on('click',function()
-    {
-			$(document.getElementById('InputTitan')).fadeIn();
-    });
-
-    $TitanCloseFunction.on('click',function()
-    {
-			$(document.getElementById('InputTitan')).fadeOut();
-    });
-
-    $("body").mousemove(function(e) {
-      var position = (e.pageX/($(window).width())) + '  ' + (e.pageY/($(window).height()));
-        document.getElementById('aux').textContent = position;
-    })
-
-  }
-
-});
+      /*
+            $("body").mousemove(function (e) {
+              var position = (e.pageX / ($(window).width())) + '  ' + (e.pageY / ($(window).height()));
+              document.getElementById('aux').textContent = position;
+            })
+      */
+    }
+  });
 
 </script>
